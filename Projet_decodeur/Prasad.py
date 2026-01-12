@@ -1,18 +1,17 @@
-def bin_vers_dec(bits):
+def bin_vers_dec(b):
     n = 0
-    for i in range(len(bits)):
-        n += bits[i] * 2**(n - i - 1)
+    for i in range(len(b)):
+        n += b[i] * 2**(n - i - 1)
     return n
 
 def dec_vers_bin(n):
     if n == 0 :
         return [0]  
-    bits = []
+    b = []
     while n > 0:
         bits.append(n % 2)
-        n = n // 2
-    bits.reverse()  
-    return bits
+        n = n // 2  
+    return b[::-1]
 
 def hex_vers_dec(hex):
     hex = hex.upper()
@@ -31,22 +30,21 @@ def hex_vers_bin(hex):
     n = hex_vers_dec(hex) 
     if n == 0:
         return [0]
-    bits = []
+    b = []
     while n > 0:
-        bits.append(n % 2)
+        b.append(n % 2)
         n = n // 2
-    bits.reverse()
-    return bits
+    return b[::-1]
 
-def bin_vers_chaine(bits):
+def bin_vers_chaine(b):
     c = ""
-    for elm in bits:
+    for elm in b:
         c += str(elm)
     return c
 
-def fractionnaire_bin_vers_dec(bits):
+def fractionnaire_bin_vers_dec(b):
     n = 0
-    for i in range(len(bits)):
+    for i in range(len(b)):
         n += bits[i] * 2**-(i + 1)
     return n
 
