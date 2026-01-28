@@ -41,6 +41,18 @@ def addition_binaire_machine(nb1, nb2, b):
     somme.append(retenue)
     return somme[::-1]
 
+#instruction 21
+
+def dec_vers_bin_machine(n, b):
+    bits = [0] * b
+    i = b - 1
+    while n > 0 and i >= 0:
+        bits[i] = n % 2
+        n //= 2
+        i -= 1
+    return bits
+
+
 #instruction 22
 def bin_machine_vers_dec(bits):
     # Convertit une liste de bits (non signée) en entier décimal
@@ -132,5 +144,6 @@ def test_fonction_17_a_26():
     #Ici  on regarde si bin(i)+bin(j) == bin(i+j) pour toute combinaison de nombres i,j appartenant à [0,100]
     #Si ce n'est pas le cas, la fonction addition binaire n'est pas fonctionnel
     #On considaire la fonction dec_vers_base_b() fonctionnel
+
 
 
