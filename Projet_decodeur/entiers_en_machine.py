@@ -89,3 +89,30 @@ def dec_vers_comp2(n, b):
 
     return bits
 
+#instruction 26
+def comp2_vers_dec(b, nb):
+    nb = [0]*(b-len(nb)) + nb[-b:]
+    signe = 1
+    if nb[0] == 1:
+        for i in range(b):
+            nb[i] = nb[i]*-1+1
+        nb = addition_binaire_machine(nb, [1], b)
+        signe = -1
+    return bin_vers_dec(nb) * signe
+
+#instruction 27
+
+def test_fonction_17_a_26():
+
+    incorrecte = False
+    for i in range(100):
+        for j in range(100):
+            if addition_binaire_machine([int(elm) for elm in str(dec_vers_base_b(j, 2))],[int(elm) for elm in str(dec_vers_base_b(i, 2))], 15)!= [0]*(16-len([int(elm) for elm in str(dec_vers_base_b(i+j, 2))]))+[int(elm) for elm in str(dec_vers_base_b(i+j, 2))]:
+                incorrecte = True
+                print("Erreur pour addition_binaire_machine(",i,",",j,", 15 ): donne ",addition_binaire_machine([int(elm) for elm in str(dec_vers_base_b(j, 2))],[int(elm) for elm in str(dec_vers_base_b(i, 2))], 15), "au lieu de :",[0]*(16-len([int(elm) for elm in str(dec_vers_base_b(i+j, 2))]))+[int(elm) for elm in str(dec_vers_base_b(i+j, 2))])
+    if not(incorrecte):
+        print("Fonction addition_binaire_machine() correcte")
+    #Ici  on regarde si bin(i)+bin(j) == bin(i+j) pour toute combinaison de nombres i,j appartenant à [0,100]
+    #Si ce n'est pas le cas, la fonction addition binaire n'est pas fonctionnel
+    #On considaire la fonction dec_vers_base_b() fonctionnel
+
