@@ -24,6 +24,23 @@ def est_representable_comp2(nb, b):
         return False
     return -2**(b-1) <= nb < 2**(b-1)
 
+#instruction 20
+
+def addition_binaire_machine(nb1, nb2, b):
+    somme = []
+    retenue = 0
+    nb1 = [0]*(b-len(nb1)) + nb1
+    nb2 = [0]*(b-len(nb2)) + nb2
+    for i in range(b-1,-1,-1):
+        if nb1[i]+nb2[i]+retenue >= 2:
+            somme.append(nb1[i]+nb2[i]+retenue-2)
+            retenue = 1
+        else:
+            somme.append(nb1[i]+nb2[i]+retenue)
+            retenue = 0
+    somme.append(retenue)
+    return somme[::-1]
+
 #instruction 22
 def bin_machine_vers_dec(bits):
     # Convertit une liste de bits (non signée) en entier décimal
@@ -115,4 +132,5 @@ def test_fonction_17_a_26():
     #Ici  on regarde si bin(i)+bin(j) == bin(i+j) pour toute combinaison de nombres i,j appartenant à [0,100]
     #Si ce n'est pas le cas, la fonction addition binaire n'est pas fonctionnel
     #On considaire la fonction dec_vers_base_b() fonctionnel
+
 
