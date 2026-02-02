@@ -1,5 +1,5 @@
 #Instruction 28
-def forme_normalisée(d) :
+def forme_normalisee(d) :
     if d < 0 :
         return (0 , dec_vers_bin(d), fractionnaire_dec_vers_bin(d, 16))
     if d < 0 :
@@ -46,5 +46,6 @@ def tests_ieee():
     # Tests automatiques des conversions IEEE
     assert round(ieee_vers_dec(dec_vers_ieee(1.0)), 5) == 1.0
     assert round(ieee_vers_dec(dec_vers_ieee(2.5)), 5) == 2.5
+
 
 
