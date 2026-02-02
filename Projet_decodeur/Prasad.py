@@ -60,6 +60,14 @@ def fractionnaire_bin_vers_dec(b):
         n += b[i] * 2**-(i + 1)
     return n
 
+
+def est_representable_bin_signe(n, b):
+    min_val = -2**(b - 1)
+    max_val = 2**(b - 1) - 1
+    return min_val <= n <= max_val
+
+
+
 def forme_normalisée(d) :
     if d < 0 :
         return (0 , dec_vers_bin(d), fractionnaire_dec_vers_bin(d, 16))
@@ -69,8 +77,3 @@ def forme_normalisée(d) :
 def afficher_ieee(ieee) :
     return ieee_vers_dec(ieee)
 
-
-def est_representable_bin_signe(n, b):
-    min_val = -2**(b - 1)
-    max_val = 2**(b - 1) - 1
-    return min_val <= n <= max_val
