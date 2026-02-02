@@ -1,5 +1,9 @@
 #Instruction 28
-def forme_normalisee(s,e,m):
+def forme_normalisée(d) :
+    if d < 0 :
+        return (0 , dec_vers_bin(d), fractionnaire_dec_vers_bin(d, 16))
+    if d < 0 :
+        return (1 , dec_vers_bin(-d), fractionnaire_dec_vers_bin(-d, 16))
 
 
 #Instruction 29
@@ -32,7 +36,9 @@ def ieee_vers_dec(ieee):
 
 
 #Instruction 33
-def afficher_ieee():
+def afficher_ieee(ieee) :
+    return ieee_vers_dec(ieee)
+
     
     
 #Instruction 34
@@ -40,4 +46,5 @@ def tests_ieee():
     # Tests automatiques des conversions IEEE
     assert round(ieee_vers_dec(dec_vers_ieee(1.0)), 5) == 1.0
     assert round(ieee_vers_dec(dec_vers_ieee(2.5)), 5) == 2.5
+
 
