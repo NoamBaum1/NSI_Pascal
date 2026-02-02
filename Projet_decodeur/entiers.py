@@ -68,7 +68,18 @@ def dec_vers_oct(n):
 def hex_vers_dec(hex):
 
 # Instructions 6
-def hex_vers_hex(hex):
+def dec_vers_hex(dec):
+    char = [str(i) for i in range(10)] + ["A","B","C","D","E","F"]   
+    L = []
+    hex = ""
+    while dec > 0:
+        L.append(dec % 16)
+        dec = dec // 16
+    
+    for elm in L:
+        hex = char[elm] + hex
+    return hex
+
 
 # Instructions 7
 def bin_vers_hex(binaire):
@@ -134,3 +145,4 @@ def addition_binaire(a, b):
     return resultat
 
 # Instructions 13
+
