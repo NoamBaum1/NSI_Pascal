@@ -31,34 +31,31 @@ def fractionnaire_dec_vers_bin(nb,p):
 
 # Instruction 15
 def fractionnaire_bin_vers_dec(binaire):
-    if binaire == "":
-        return 0
-    
-    # Autoriser '.' ou ','
-    if '.' in binaire:
-        partie_entiere, partie_frac = binaire.split('.')
-    elif ',' in binaire:
-        partie_entiere, partie_frac = binaire.split(',')
-    else:
-        partie_entiere = binaire
-        partie_frac = ""
-    
+    """
+    Convertit un nombre en représentation binaire fractionnaire en décimal
+    sans utiliser enumerate.
+    binaire : dict avec 'sign', 'enti', 'frac'
+    """
+    s = binaire['sign']
+    enti = binaire['enti']
+    frac = binaire['frac']
+
     # Partie entière
-    entier = 0
-    for bit in partie_entiere:
-        entier = entier * 2 + int(bit)
-    
+    valeur = 0
+    for bit in enti:
+        valeur = valeur * 2 + bit
+
     # Partie fractionnaire
-    frac = 0
-    puissance = 1/2
-    
-    for bit in partie_frac:
-        frac += int(bit) * puissance
-        puissance /= 2
-    
-    return entier + frac
+    puissance = 2  # commence à 2^-1
+    for bit in frac:
+        valeur += bit / puissance
+        puissance *= 2
 
+    # Appliquer le signe
+    if s == 1:
+        valeur = -valeur
 
+    return valeur
 
 
 
@@ -95,6 +92,7 @@ assert fractionnaire_bin_vers_dec({
     'enti': [1,1,0,0,1,0,0],
     'frac': [0,1,0,1,0,1]
 }) == -100.328125
+
 
 
 
