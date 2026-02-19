@@ -78,16 +78,27 @@ def hex_vers_dec(hexa):
 
 # Instructions 6
 def dec_vers_hex(dec):
-    char = [str(i) for i in range(10)] + ["A","B","C","D","E","F"]   
-    L = []
-    hex = ""
+    if dec == 0:
+        return [0]
+    hexa = []
     while dec > 0:
-        L.append(dec % 16)
-        dec = dec // 16
-    
-    for elm in L:
-        hex = char[elm] + hex
-    return hex
+        hexa.insert(0, dec % 16)
+        dec //= 16
+    for i in range(len(hexa)):
+        if hexa[i] == 10:
+            hexa[i] = "A"
+        elif hexa[i] == 11:
+            hexa[i] = "B"
+        elif hexa[i] == 12:
+            hexa[i] = "C"
+        elif hexa[i] == 13:
+            hexa[i] = "D"
+        elif hexa[i] == 14:
+            hexa[i] = "E"
+        elif hexa[i] == 15:
+            hexa[i] = "F"
+
+    return hexa
 
 
 # Instructions 7
@@ -143,6 +154,7 @@ def addition_binaire(a, b):
     return resultat
 
 # Instructions 13
+
 
 
 
