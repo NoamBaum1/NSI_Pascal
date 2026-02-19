@@ -155,6 +155,51 @@ def addition_binaire(a, b):
 
 # Instructions 13
 
+# Tests bin_vers_dec
+assert bin_vers_dec([1, 0, 1, 0]) == 10
+assert bin_vers_dec([1, 1, 1, 1]) == 15
+
+# Tests dec_vers_bin
+assert dec_vers_bin(10) == [1, 0, 1, 0]
+assert dec_vers_bin(15) == [1, 1, 1, 1]
+
+# Tests oct_vers_dec
+assert oct_vers_dec([1, 2]) == 10      # 12₈ = 10₁₀
+assert oct_vers_dec([1, 7]) == 15      # 17₈ = 15₁₀
+
+# Tests dec_vers_oct
+assert dec_vers_oct(10) == [1, 2]
+assert dec_vers_oct(15) == [1, 7]
+
+# Tests hex_vers_dec
+assert hex_vers_dec([1, 'A']) == 26    # 1A₁₆ = 26₁₀
+assert hex_vers_dec(['F']) == 15
+
+
+# Tests bin_vers_hex
+assert bin_vers_hex([1, 0, 1, 0]) == ['A']     # 1010₂ = A₁₆
+assert bin_vers_hex([1, 1, 1, 1]) == ['F']
+
+# Tests hex_vers_bin
+assert hex_vers_bin(['A']) == [1, 0, 1, 0]
+assert hex_vers_bin(['F']) == [1, 1, 1, 1]
+
+# Tests bin_vers_chaine
+assert bin_vers_chaine([1, 0, 1, 0]) == "1010"
+assert bin_vers_chaine([1, 1, 1, 1]) == "1111"
+
+# Tests bin_vers_entier
+assert bin_vers_entier([1, 0, 1, 0]) == 1010
+assert bin_vers_entier([1, 1, 1, 1]) == 1111
+
+# Tests hex_vers_chaine
+assert hex_vers_chaine([1, 'A']) == "1A"
+assert hex_vers_chaine(['F']) == "F"
+
+# Tests addition_binaire
+assert addition_binaire([1, 0, 1, 0], [1, 1]) == [1, 1, 0, 1]  # 10 + 3 = 13
+assert addition_binaire([1, 1, 1, 1], [1]) == [1, 0, 0, 0, 0]  # 15 + 1 = 16
+
 
 
 
