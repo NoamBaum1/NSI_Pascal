@@ -4,6 +4,7 @@ def fractionnaire_dec_vers_bin(nb,p):
         signe = 0 
     else:
         signe = 1
+    nb = abs(nb)
     nb_entier = int(nb//1)
     bits_entier = []
     if nb_entier == 0:
@@ -19,6 +20,9 @@ def fractionnaire_dec_vers_bin(nb,p):
     for i in range(p):
         
         nb_decimal = nb_decimal * 2
+        
+        if nb_decimal == 0.0:
+            break
         bits_decimal.append(int(nb_decimal//1))
         nb_decimal = nb_decimal - nb_decimal//1
     
@@ -91,5 +95,6 @@ assert fractionnaire_bin_vers_dec({
     'enti': [1,1,0,0,1,0,0],
     'frac': [0,1,0,1,0,1]
 }) == -100.328125
+
 
 
