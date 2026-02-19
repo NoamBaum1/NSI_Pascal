@@ -106,13 +106,11 @@ def bin_vers_chaine(b):
     return c
 
 # Instructions 10
-def bin_vers_entier(binaire):
-    valeur = 0
-    puissance = len(binaire) - 1
-    for bit in binaire:
-        valeur += bit * (2 ** puissance)
-        puissance -= 1
-    return valeur
+def bin_vers_entier(bits):
+    chaine = ""
+    for bit in bits:
+        chaine += str(bit)
+    return int(chaine)
 
 
 # Instructions 11
@@ -145,6 +143,7 @@ def addition_binaire(a, b):
     return resultat
 
 # Instructions 13
+
 
 
 
