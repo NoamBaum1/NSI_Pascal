@@ -117,11 +117,10 @@ def bin_vers_entier(binaire):
 
 # Instructions 11
 def hex_vers_chaine(hexa):
-    caracteres = "0123456789ABCDEF"
-    chaine = ""
-    for chiffre in hexa:
-        chaine += caracteres[chiffre]
-    return chaine
+    car = ""
+    for elm in hexa:
+        car = car + str(elm)
+    return car
 
 
 # Instructions 12
@@ -146,6 +145,7 @@ def addition_binaire(a, b):
     return resultat
 
 # Instructions 13
+
 
 
 
