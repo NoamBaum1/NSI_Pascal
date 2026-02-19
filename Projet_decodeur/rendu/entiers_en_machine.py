@@ -26,20 +26,36 @@ def est_representable_comp2(nb, b):
 
 #instruction 20
 
-def addition_binaire_machine(nb1, nb2, b):
-    somme = []
+def addition_binaire_machine(a, binaire, b):
+    resultat = []
     retenue = 0
-    nb1 = [0]*(b-len(nb1)) + nb1
-    nb2 = [0]*(b-len(nb2)) + nb2
-    for i in range(b-1,-1,-1):
-        if nb1[i]+nb2[i]+retenue >= 2:
-            somme.append(nb1[i]+nb2[i]+retenue-2)
-            retenue = 1
-        else:
-            somme.append(nb1[i]+nb2[i]+retenue)
-            retenue = 0
-    somme.append(retenue)
-    return somme[::-1]
+    
+    i = len(a) - 1
+    j = len(binaire) - 1
+    
+    while i >= 0 or j >= 0:
+        bit_a = a[i] if i >= 0 else 0
+        bit_b = binaire[j] if j >= 0 else 0
+        
+        somme = bit_a + bit_b + retenue
+        
+        resultat.insert(0, somme % 2)
+        retenue = somme // 2
+        
+        i -= 1
+        j -= 1
+    
+    # retenue finale éventuelle
+    if retenue:
+        resultat.insert(0, retenue)
+    
+    # Retenue machine = bit qui déborde
+    retenue_machine = 0
+    if len(resultat) > b:
+        retenue_machine = resultat[0]
+        resultat = resultat[-b:]   # on garde b bits
+    
+    return resultat, retenue_machine
 
 #instruction 21
 
@@ -144,6 +160,7 @@ def test_fonction_17_a_26():
     #Ici  on regarde si bin(i)+bin(j) == bin(i+j) pour toute combinaison de nombres i,j appartenant à [0,100]
     #Si ce n'est pas le cas, la fonction addition binaire n'est pas fonctionnel
     #On considaire la fonction dec_vers_base_b() fonctionnel
+
 
 
 
