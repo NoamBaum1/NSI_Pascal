@@ -1,24 +1,14 @@
 # Instructions 0
-def afficher_binaire(n):
-    # Convertit un entier naturel en binaire et l'affiche avec des espaces
-    bits = []
-
-    # Cas particulier : si n vaut 0
-    if n == 0:
-        bits = [0]
-
-    # Conversion décimal → binaire
-    while n > 0:
-        bits.insert(0, n % 2)  # on ajoute le reste au début
-        n = n // 2             # division entière par 2
-
-    # Construction de l'affichage avec groupes de 4 bits
-    res = ""
-    for i in range(len(bits)):
-        res += str(bits[i])
-        # Ajout d'un espace tous les 4 bits (sauf à la fin)
-        if (len(bits) - i - 1) % 4 == 0 and i != len(bits) - 1:
-            res += " "
+def afficher_binaire(bits):
+    nb = ""
+    for i in range(len(bits)-1,-1,-1):
+        nb = nb + bits[i]
+        if i%4 == 0:
+            nb = nb + " "
+        print (nb)
+    if nb[len(nb)-1]==" ":
+        nb = nb[:len(nb)-1]
+    return nb
 
     print(res)
 
@@ -162,5 +152,6 @@ def addition_binaire(a, b):
     return resultat
 
 # Instructions 13
+
 
 
