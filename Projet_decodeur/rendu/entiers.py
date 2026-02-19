@@ -95,15 +95,8 @@ def bin_vers_hex(bits):
     return dec_vers_hex(bin_vers_dec(bits))
 
 # Instructions 8
-def hex_vers_bin(hex):
-    n = hex_vers_dec(hex) 
-    if n == 0:
-        return [0]
-    b = []
-    while n > 0:
-        b.append(n % 2)
-        n = n // 2
-    return b[::-1
+def hex_vers_bin(bits):
+    return dec_vers_bin(hex_vers_dec(bits))
 
 # Instructions 9
 def bin_vers_chaine(b):
@@ -153,6 +146,7 @@ def addition_binaire(a, b):
     return resultat
 
 # Instructions 13
+
 
 
 
