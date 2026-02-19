@@ -2,7 +2,7 @@
 def afficher_binaire(bits):
     nb = ""
     for i in range(len(bits)-1,-1,-1):
-        nb = nb + bits[i]
+        nb = nb + str(bits[i])
         if i%4 == 0:
             nb = nb + " "
         print (nb)
@@ -152,6 +152,7 @@ def addition_binaire(a, b):
     return resultat
 
 # Instructions 13
+
 
 
 
