@@ -31,9 +31,6 @@ def dec_vers_bin(n):
     return b[::-1]
 
 
-
-
-
 # Instructions 3
 def oct_vers_dec(octal):
     valeur = 0
@@ -94,9 +91,8 @@ def dec_vers_hex(dec):
 
 
 # Instructions 7
-def bin_vers_hex(binaire):
-    decimal = bin_vers_entier(binaire)
-    return dec_vers_hex(decimal)
+def bin_vers_hex(bits):
+    return dec_vers_hex(bin_vers_dec(bits))
 
 # Instructions 8
 def hex_vers_bin(hex):
@@ -157,6 +153,7 @@ def addition_binaire(a, b):
     return resultat
 
 # Instructions 13
+
 
 
 
