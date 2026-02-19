@@ -26,7 +26,7 @@ def dec_vers_bin(n):
         return [0]  
     b = []
     while n > 0:
-        bits.append(n % 2)
+        b.append(n % 2)
         n = n // 2  
     return b[::-1]
 
@@ -152,6 +152,7 @@ def addition_binaire(a, b):
     return resultat
 
 # Instructions 13
+
 
 
 
