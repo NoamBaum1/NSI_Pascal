@@ -55,25 +55,30 @@ def dec_vers_oct(n):
     return resultat
 
 # Instructions 5
-def hex_vers_dec(hex):
-    n = 0
-    puissance = 0
-    for i in range(len(h) - 1, -1, -1):
-        elm = h[i]
-
-        if '0' <= elm <= '9':
-            chiffre = ord(elm) - ord('0')
-        elif 'A' <= elm <= 'F':
-            chiffre = ord(elm) - ord('A') + 10
-        elif 'a' <= elm <= 'f':   
-            chiffre = ord(elm) - ord('a') + 10
+def hex_vers_dec(hexa):
+    for i in range(len(hexa)):
+        if hexa[i] == "A":
+            hexa[i] = 10
+        elif hexa[i] == "B":
+            hexa[i] = 11
+        elif hexa[i] == "C":
+            hexa[i] = 12
+        elif hexa[i] == "D":
+            hexa[i] = 13
+        elif hexa[i] == "E":
+            hexa[i] = 14
+        elif hexa[i] == "F":
+            hexa[i] = 15
         else:
-            return None
+            hexa[i] = int(hexa[i])
+    valeur = 0
+    puissance = len(hexa) - 1
+    for chiffre in hexa:
+        valeur += chiffre * (16 ** puissance)
+        puissance -= 1
+    return valeur
 
-        n += chiffre * (16 ** puissance)
-        puissance += 1
 
-    return n
 # Instructions 6
 def dec_vers_hex(dec):
     char = [str(i) for i in range(10)] + ["A","B","C","D","E","F"]   
@@ -152,6 +157,7 @@ def addition_binaire(a, b):
     return resultat
 
 # Instructions 13
+
 
 
 
