@@ -34,17 +34,14 @@ def exposant(x):
 
 #Instruction 30
 def mantisse(x):
-    s, e, m = forme_normalisee(x)
-    return m
 
 
 #Instruction 31
 def dec_vers_ieee(x):
-    def dec_vers_ieee(x):
     s, e, m = forme_normalisee(x)
     return {
         "signe": s,
-        "exposant": exposant(x),
+        "exposant": e
         "mantisse": m
     }
 
@@ -68,6 +65,7 @@ def tests_ieee():
     # Tests automatiques des conversions IEEE
     assert round(ieee_vers_dec(dec_vers_ieee(1.0)), 5) == 1.0
     assert round(ieee_vers_dec(dec_vers_ieee(2.5)), 5) == 2.5
+
 
 
 
