@@ -13,10 +13,10 @@ def afficher_binaire(bits):
     print(res)
 
 # Instructions 1
-def bin_vers_dec(b):
+def bin_vers_dec(bits):
     n = 0
-    for i in range(len(b)):
-        n += b[i] * 2**(n - i - 1)
+    for i in range(len(bits)):
+        n += bits[i] * 2**(len(bits)-i-1)
     return n
 
 
@@ -152,6 +152,7 @@ def addition_binaire(a, b):
     return resultat
 
 # Instructions 13
+
 
 
 
