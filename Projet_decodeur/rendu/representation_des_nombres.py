@@ -80,11 +80,11 @@ def menu_conversion():
     # ----- CAS ENTIER -----
     if float(n) == float(int(n)):
         n = int(n)  # s'assure que n est bien un entier
-        if base == 2:
+        if base == "2":
             n = bin_vers_dec(n)
-        if base == 3:
+        if base == "3":
             n = oct_vers_dec(n)
-        if base == 4:
+        if base == "4":
             n = hex_vers_dec(n)
 
         # Binaire
