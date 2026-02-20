@@ -28,7 +28,7 @@ def forme_normalisee(nb):
 
 
 #Instruction 29
-def exposant(nb):
+def exposant(decimal):
     """
     Calcule les 8 bits de l'exposant IEEE 754 simple précision.
 
