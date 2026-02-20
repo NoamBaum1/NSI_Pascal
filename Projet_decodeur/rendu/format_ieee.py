@@ -75,6 +75,19 @@ def mantisse(nb):
 
 #Instruction 31
 def dec_vers_ieee(n):
+    """
+    Affiche la représentation IEEE 754 de manière lisible.
+
+    Paramètres
+    ----------
+    float 
+        Nombre à convertir.
+    
+    Retour
+    ------
+    dict
+        Représentation IEEE 754.
+    """
     ieee = {}
 
     # ----- SIGNE -----
@@ -133,6 +146,19 @@ def dec_vers_ieee(n):
 
 #Instruction 32
 def ieee_vers_dec(ieee):
+    """
+    Convertie un nombre au format IEEE 754 en décimal.
+
+    Paramètres
+    ----------
+    ieee : dict
+        Représentation IEEE 754.
+
+    Retour
+    ------
+    float
+        Nombre copnvertie en décimal.
+    """
     sign = ieee['sign']
     expo = ieee['expo']
     mant = ieee['mant']
@@ -226,6 +252,7 @@ assert ieee_vers_dec({
     'expo': [1,0,0,0,0,1,0,1],
     'mant': [1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 }) == -100.25
+
 
 
 
