@@ -43,3 +43,35 @@ def menu_saisie():
                 return int(n, 16)
 
         print("Erreur de saisie")
+
+#INSTRUCTIONS 36
+def menu_conversion():
+    print("=== REPRESENTATIONS DES NOMBRES ===")
+
+    n = menu_saisie()
+
+    representations = {}
+
+    # Signe
+    if n < 0:
+        representations['sign'] = 1
+    else:
+        representations['sign'] = 0
+
+    representations['dec'] = n
+
+    # Binaire
+    representations['bin'] = dec_vers_bin(abs(n))
+
+    # Hexadécimal
+    representations['hex'] = dec_vers_hex(abs(n))
+
+    # Complément à 2 sur 8 bits
+    representations['comp2'] = dec_vers_comp2(n, 8)
+
+    print("\nRESULTATS\n")
+
+    print("Décimal :", representations['dec'])
+    print("Binaire :", representations['bin'])
+    print("Hexadécimal :", representations['hex'])
+    print("Complément à 2 :", representations['comp2'])
