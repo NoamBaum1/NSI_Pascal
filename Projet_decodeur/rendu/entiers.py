@@ -17,14 +17,12 @@ def afficher_binaire(bits):
     """
     nb = ""
     for i in range(len(bits)-1,-1,-1):
-        nb = nb + str(bits[i])
+        nb = nb + str(bits[::-1][i])
         if i%4 == 0:
             nb = nb + " "
     if nb[len(nb)-1]==" ":
         nb = nb[:len(nb)-1]
     return nb
-
-    print(res)
 
 # Instructions 1
 def bin_vers_dec(bits):
@@ -371,6 +369,7 @@ assert hex_vers_chaine(['F']) == "F"
 # Tests addition_binaire
 assert addition_binaire([1, 0, 1, 0], [1, 1]) == [1, 1, 0, 1]  # 10 + 3 = 13
 assert addition_binaire([1, 1, 1, 1], [1]) == [1, 0, 0, 0, 0]  # 15 + 1 = 16
+
 
 
 
