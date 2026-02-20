@@ -117,27 +117,40 @@ def dec_vers_ieee(n):
 
 #Instruction 32
 def ieee_vers_dec(ieee):
-    """
-    Convertit une représentation IEEE 754 simple précision
-    en nombre décimal.
+    sign = ieee['sign']
+    expo = ieee['expo']
+    mant = ieee['mant']
 
-    Paramètres
-    ----------
-    ieee : dict
-        Dictionnaire contenant :
-        - 'signe' : bit de signe
-        - 'exposant' : liste des 8 bits
-        - 'mantisse' : liste des 23 bits
+    # ----- EXPOSANT -----
+    exposant = 0
+    for bit in expo:
+        exposant = exposant * 2 + bit
 
-    Retour
-    ------
-    float
-        Valeur décimale correspondante.
-    """
-    # Convertit un nombre IEEE 754 en décimal
-    s = ieee["sign"]  # bit de signe
-    expo = ieee["expo"]  # exposant
-    mant = ieee["mant"]  # mantisse
+    # ----- TEST ZERO (manuel) -----
+    mantisse_nulle = True
+    for bit in mant:
+        if bit != 0:
+            mantisse_nulle = False
+
+    if exposant == 0 and mantisse_nulle:
+        return 0
+
+    e = exposant - 127
+
+    # ----- MANTISSE -----
+    m = 1
+    puissance = 2
+
+    for bit in mant:
+        m += bit / puissance
+        puissance *= 2
+
+    valeur = m * (2 ** e)
+
+    if sign == 1:
+        valeur = -valeur
+
+    return valeur
 
 
 #Instruction 33
@@ -169,6 +182,7 @@ def tests_ieee():
     # Tests automatiques des conversions IEEE
     assert round(ieee_vers_dec(dec_vers_ieee(1.0)), 5) == 1.0
     assert round(ieee_vers_dec(dec_vers_ieee(2.5)), 5) == 2.5
+
 
 
 
