@@ -57,32 +57,52 @@ def menu_saisie():
 
 #INSTRUCTIONS 36
 def menu_conversion():
-    print("=== REPRESENTATIONS DES NOMBRES ===")
+    """
+    Fonction principale du programme.
+    Lance le menu de saisie, construit un dictionnaire avec toutes les représentations du nombre
+    et affiche les résultats.
+    """
+    print("=== REPRESENTATIONS DES NOMBRES ===\n")
 
+    # Saisie du nombre par l'utilisateur
     n = menu_saisie()
 
-    representations = {}
+    # Dictionnaire de stockage des représentations
+    rep = {}
+    rep['dec'] = n
+    rep['sign'] = 0 if n >= 0 else 1
 
-    # Signe
-    if n < 0:
-        representations['sign'] = 1
+    # ----- CAS ENTIER -----
+    if int(n) == n:
+        n = int(n)  # s'assure que n est bien un entier
+
+        # Binaire
+        rep['bin'] = dec_vers_bin(abs(n))
+
+        # Hexadécimal
+        rep['hex'] = dec_vers_hex(abs(n))
+
+        # Complément à 2 sur NB_BITS (par exemple 8 bits)
+        rep['comp2'] = dec_vers_comp2(n, 8)
+
+        # Affichage simple
+        print("\nNombre entier détecté\n")
+        print("Décimal        :", rep['dec'])
+        print("Binaire        :", rep['bin'])
+        print("Hexadécimal    :", rep['hex'])
+        print("Complément à 2 :", rep['comp2'])
+
+    # ----- CAS NON ENTIER -----
     else:
-        representations['sign'] = 0
+        # Binaire fractionnaire (avec précision par défaut, ex: PRECISION = 10)
+        rep['bin'] = fractionnaire_dec_vers_bin(n, 10)
 
-    representations['dec'] = n
+        # Format IEEE 754 simple précision
+        rep['ieee'] = dec_vers_ieee(n)
 
-    # Binaire
-    representations['bin'] = dec_vers_bin(abs(n))
+        # Affichage simple
+        print("\nNombre non entier détecté\n")
+        print("Décimal :", rep['dec'])
+        print("Binaire :", rep['bin'])
+        print("IEEE   :", rep['ieee'])
 
-    # Hexadécimal
-    representations['hex'] = dec_vers_hex(abs(n))
-
-    # Complément à 2 sur 8 bits
-    representations['comp2'] = dec_vers_comp2(n, 8)
-
-    print("\nRESULTATS\n")
-
-    print("Décimal :", representations['dec'])
-    print("Binaire :", representations['bin'])
-    print("Hexadécimal :", representations['hex'])
-    print("Complément à 2 :", representations['comp2'])
