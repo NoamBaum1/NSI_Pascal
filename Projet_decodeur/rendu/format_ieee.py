@@ -174,14 +174,41 @@ def afficher_ieee(ieee) :
     
     
 #Instruction 34
-def tests_ieee():
-    """
-    Effectue des tests automatiques pour vérifier
-    la validité des conversions IEEE 754.
-    """
-    # Tests automatiques des conversions IEEE
-    assert round(ieee_vers_dec(dec_vers_ieee(1.0)), 5) == 1.0
-    assert round(ieee_vers_dec(dec_vers_ieee(2.5)), 5) == 2.5
+# ===== TESTS dec_vers_ieee =====
+
+assert dec_vers_ieee(5/8) == {
+    'sign': 0,
+    'expo': [0,1,1,1,1,1,1,0],
+    'mant': [0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+}
+
+assert dec_vers_ieee(-100.25) == {
+    'sign': 1,
+    'expo': [1,0,0,0,0,1,0,1],
+    'mant': [1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+}
+
+assert dec_vers_ieee(0) == {
+    'sign': 0,
+    'expo': [0,0,0,0,0,0,0,0],
+    'mant': [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+}
+
+# ===== TESTS ieee_vers_dec =====
+
+assert ieee_vers_dec({
+    'sign': 0,
+    'expo': [0,1,1,1,1,1,1,0],
+    'mant': [0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+}) == 5/8
+
+assert ieee_vers_dec({
+    'sign': 1,
+    'expo': [1,0,0,0,0,1,0,1],
+    'mant': [1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+}) == -100.25
+
+
 
 
 
