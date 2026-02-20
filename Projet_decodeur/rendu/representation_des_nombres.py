@@ -5,23 +5,28 @@ from entier_en_machine import *
 
 #INSTRUCTIONS 35 
 def menu_saisie():
-    print("Base du nombre :")
-    print("1 - Décimal")
-    print("2 - Binaire")
-    print("3 - Octal")
-    print("4 - Hexadécimal")
+    # ----- Choix de la base -----
+    base = ""
+    while base not in ["1", "2", "3", "4"]:
+        print("Choisir une base :")
+        print("1 - Décimal")
+        print("2 - Binaire")
+        print("3 - Octal")
+        print("4 - Hexadécimal")
+        base = input("Votre choix : ")
+        if base not in ["1","2","3","4"]:
+            print("Erreur : choix invalide")
 
-    base = input("Choix : ")
-
+    # ----- Saisie du nombre -----
     while True:
-        n = input("Saisie : ")
+        n = input("Saisir le nombre : ")
 
         # Décimal
         if base == "1" and n.lstrip('-').isdigit():
             return int(n)
 
         # Binaire
-        if base == "2":
+        elif base == "2":
             valide = True
             for c in n:
                 if c not in "01":
@@ -30,7 +35,7 @@ def menu_saisie():
                 return int(n, 2)
 
         # Octal
-        if base == "3":
+        elif base == "3":
             valide = True
             for c in n:
                 if c not in "01234567":
@@ -39,7 +44,7 @@ def menu_saisie():
                 return int(n, 8)
 
         # Hexadécimal
-        if base == "4":
+        elif base == "4":
             valide = True
             for c in n.upper():
                 if c not in "0123456789ABCDEF":
@@ -47,7 +52,8 @@ def menu_saisie():
             if valide and n != "":
                 return int(n, 16)
 
-        print("Erreur de saisie")
+        print("Erreur : saisie invalide pour cette base, recommencez")
+
 
 #INSTRUCTIONS 36
 def menu_conversion():
