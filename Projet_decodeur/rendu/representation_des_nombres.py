@@ -1,7 +1,7 @@
-from entier import *
-from non_entier import *
+from entiers import *
+from non_entiers import *
 from format_ieee import *
-from entier_en_machine import *
+from entiers_en_machine import *
 
 #INSTRUCTIONS 35 
 def menu_saisie():
