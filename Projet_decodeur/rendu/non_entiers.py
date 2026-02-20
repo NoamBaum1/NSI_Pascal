@@ -1,5 +1,24 @@
 #Instruction 14
 def fractionnaire_dec_vers_bin(nb,p):
+    """
+    Convertit un nombre décimal (avec partie fractionnaire)
+    en représentation binaire signée.
+
+    Paramètres
+    ----------
+    nb : float
+        Nombre décimal à convertir.
+    p : int
+        Nombre maximum de bits pour la partie fractionnaire.
+
+    Retour
+    ------
+    dict
+        Dictionnaire contenant :
+        - 'sign' : 0 si le nombre est positif, 1 s'il est négatif
+        - 'enti' : liste de bits représentant la partie entière
+        - 'frac' : liste de bits représentant la partie fractionnaire
+    """
     if nb>=0:
         signe = 0 
     else:
@@ -35,6 +54,10 @@ def fractionnaire_bin_vers_dec(binaire):
     Convertit un nombre en représentation binaire fractionnaire en décimal
     sans utiliser enumerate.
     binaire : dict avec 'sign', 'enti', 'frac'
+    Retour
+    ------
+    float
+        Valeur décimale correspondante.
     """
     s = binaire['sign']
     enti = binaire['enti']
@@ -92,6 +115,7 @@ assert fractionnaire_bin_vers_dec({
     'enti': [1,1,0,0,1,0,0],
     'frac': [0,1,0,1,0,1]
 }) == -100.328125
+
 
 
 
