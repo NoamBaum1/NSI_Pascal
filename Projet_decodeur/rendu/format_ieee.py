@@ -1,3 +1,6 @@
+from non_entier import *
+from entier import *
+
 #Instruction 28
 def forme_normalisee(nb):
     """
@@ -207,6 +210,7 @@ assert ieee_vers_dec({
     'expo': [1,0,0,0,0,1,0,1],
     'mant': [1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 }) == -100.25
+
 
 
 
