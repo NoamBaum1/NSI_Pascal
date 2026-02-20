@@ -34,28 +34,28 @@ def menu_saisie():
         elif base == "2":
             valide = True
             for c in n:
-                if c not in "01.":
+                if c not in "01":
                     valide = False
             if valide and n != "":
-                return int(n, 2),base
+                return int(n),base
 
         # Octal
         elif base == "3":
             valide = True
             for c in n:
-                if c not in "01234567.":
+                if c not in "01234567":
                     valide = False
             if valide and n != "":
-                return int(n, 8),base
+                return int(n),base
 
         # Hexadécimal
         elif base == "4":
             valide = True
             for c in n.upper():
-                if c not in "0123456789ABCDEF.":
+                if c not in "0123456789ABCDEF":
                     valide = False
             if valide and n != "":
-                return int(n, 16),base
+                return int(n),base
 
         print("Erreur : saisie invalide pour cette base, recommencez")
 
@@ -82,13 +82,13 @@ def menu_conversion():
         n = int(n)  # s'assure que n est bien un entier
         
         if base == "2":
-            n = [elm for elm in str(n)]
+            n = [int(elm) for elm in str(n)]
             n = bin_vers_dec(n)
         if base == "3":
-            n = [elm for elm in str(n)]
+            n = [int(elm) for elm in str(n)]
             n = oct_vers_dec(n)
         if base == "4":
-            n = [elm for elm in str(n)]
+            n = [int(elm) for elm in str(n)]
             n = hex_vers_dec(n)
 
         # Binaire
