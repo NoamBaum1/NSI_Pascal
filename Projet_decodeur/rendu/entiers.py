@@ -1,6 +1,6 @@
 # Instructions 0
 def afficher_binaire(bits):
-     """
+    """
     Affiche et retourne une chaîne représentant un nombre binaire.
 
     Paramètres
@@ -372,7 +372,6 @@ assert hex_vers_chaine(['F']) == "F"
 # Tests addition_binaire
 assert addition_binaire([1, 0, 1, 0], [1, 1]) == [1, 1, 0, 1]  # 10 + 3 = 13
 assert addition_binaire([1, 1, 1, 1], [1]) == [1, 0, 0, 0, 0]  # 15 + 1 = 16
-
 
 
 
