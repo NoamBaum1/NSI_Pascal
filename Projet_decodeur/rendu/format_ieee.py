@@ -20,10 +20,12 @@ def forme_normalisee(nb):
         exposant : liste des 8 bits de l’exposant biaisé
         mantisse : liste des bits de la mantisse
     """
-    if nb <= 0:
-        signe = 0
-    else:
+    if nb < 0:
         signe = 1
+        nb = nb*-1
+    else:
+        signe = 0
+    
     return(signe,exposant(nb),mantisse(nb))
 
 
@@ -43,14 +45,18 @@ def exposant(decimal):
         Liste de 8 bits correspondant à l’exposant biaisé (biais = 127).
     """
     nb = fractionnaire_dec_vers_bin(decimal,24)
-    if len(nb["enti"]) == 1 and nb["enti"][0]==0 :
-        exp = -1
-        while nb["enti"][0] == 1:
-            nb["enti"] = nb["enti"][1:]
-            exp -= 1
-        return [0] * (8 - len(dec_vers_bin(exp+127))) + dec_vers_bin(exp+127)
+    if len(nb["frac"]) == 0:
+            return [0] * 8
     else:
-        return [0] * (8 - len(dec_vers_bin(len(nb["enti"])+126))) + dec_vers_bin(len(nb["enti"])+126)
+        if len(nb["enti"]) == 1 and nb["enti"][0]==0 :
+            exp = -1
+            while len(nb["frac"]) > 0 and nb["frac"][0] == 0:
+                
+                nb["frac"] = nb["frac"][1:]
+                exp -= 1
+            return [0] * (8 - len(dec_vers_bin(exp+127))) + dec_vers_bin(exp+127)
+        else:
+            return [0] * (8 - len(dec_vers_bin(len(nb["enti"])+126))) + dec_vers_bin(len(nb["enti"])+126)
 
 
 #Instruction 30
@@ -68,9 +74,14 @@ def mantisse(nb):
     list[int]
         Liste des bits de la mantisse
     """
-    binaire = fractionnaire_dec_vers_bin(nb,24)
-    bin_decimal = binaire["enti"]+binaire["frac"] + [0]*23
-    return bin_decimal[1:24]
+    binaire = fractionnaire_dec_vers_bin(nb,48)
+    bin_decimal = binaire["enti"]+binaire["frac"] + [0]*48
+    i = 0
+    while i < len(bin_decimal) and bin_decimal[i] == 0:
+        i += 1
+    #La boucle sarrette quand un 1 est detecté dans les bits
+    mant = bin_decimal[i + 1:] + [0] * 23 #On prend les 23 bits après sans prendre le 1 (norme de IEEE)
+    return mant[:23] #On garde seulement 23 bits
 
 
 #Instruction 31
@@ -252,21 +263,3 @@ assert ieee_vers_dec({
     'expo': [1,0,0,0,0,1,0,1],
     'mant': [1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 }) == -100.25
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
