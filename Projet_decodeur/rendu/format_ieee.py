@@ -159,20 +159,23 @@ def ieee_vers_dec(ieee):
 #Instruction 33
 def afficher_ieee(ieee) :
     """
-    Affiche la représentation IEEE 754.
+    Affiche la représentation IEEE 754 de manière lisible.
 
     Paramètres
     ----------
     ieee : dict
         Représentation IEEE 754.
 
-    Pas de Retour
+    Retour
+    ------
+    str
+        Représentation IEEE 754 avec des espaces.
     """
     s, e, m = ieee["sign"],ieee["expo"],ieee["mant"]
     char = str(s) + " "
     for elm in e+[" "]+m:
         char = char + str(elm)
-    print(char)
+    return char
 
     
     
@@ -210,6 +213,7 @@ assert ieee_vers_dec({
     'expo': [1,0,0,0,0,1,0,1],
     'mant': [1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 }) == -100.25
+
 
 
 
