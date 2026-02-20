@@ -112,20 +112,20 @@ def ieee_vers_dec(ieee):
 #Instruction 33
 def afficher_ieee(ieee) :
     """
-    Affiche la valeur décimale correspondant
-    à une représentation IEEE 754.
+    Affiche la représentation IEEE 754.
 
     Paramètres
     ----------
     ieee : dict
         Représentation IEEE 754.
 
-    Retour
-    ------
-    float
-        Valeur décimale correspondante.
+    Pas de Retour
     """
-    return ieee_vers_dec(ieee)
+    s, e, m = ieee["sign"],ieee["expo"],ieee["mant"]
+    char = str(s) + " "
+    for elm in e+[" "]+m:
+        char = char + str(elm)
+    print(char)
 
     
     
@@ -138,6 +138,7 @@ def tests_ieee():
     # Tests automatiques des conversions IEEE
     assert round(ieee_vers_dec(dec_vers_ieee(1.0)), 5) == 1.0
     assert round(ieee_vers_dec(dec_vers_ieee(2.5)), 5) == 2.5
+
 
 
 
