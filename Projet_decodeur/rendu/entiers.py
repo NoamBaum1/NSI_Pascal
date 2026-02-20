@@ -20,7 +20,6 @@ def afficher_binaire(bits):
         nb = nb + str(bits[i])
         if i%4 == 0:
             nb = nb + " "
-        print (nb)
     if nb[len(nb)-1]==" ":
         nb = nb[:len(nb)-1]
     return nb
@@ -372,6 +371,7 @@ assert hex_vers_chaine(['F']) == "F"
 # Tests addition_binaire
 assert addition_binaire([1, 0, 1, 0], [1, 1]) == [1, 1, 0, 1]  # 10 + 3 = 13
 assert addition_binaire([1, 1, 1, 1], [1]) == [1, 0, 0, 0, 0]  # 15 + 1 = 16
+
 
 
 
