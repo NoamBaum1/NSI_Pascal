@@ -1,3 +1,4 @@
+from entiers import *
 #Instruction 14
 def fractionnaire_dec_vers_bin(nb,p):
     """
@@ -117,6 +118,7 @@ assert fractionnaire_bin_vers_dec({
     'enti': [1,1,0,0,1,0,0],
     'frac': [0,1,0,1,0,1]
 }) == -100.328125
+
 
 
 
