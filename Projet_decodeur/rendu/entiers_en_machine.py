@@ -1,5 +1,3 @@
-
-
 #instruction 17
 def est_representable_bin(nb, b):
     """
@@ -391,6 +389,7 @@ assert dec_vers_comp2(-123, 16) == [1,1,1,1,1,1,1,1,1,0,0,0,0,1,0,1]
 assert comp2_vers_dec([0,0,0,0,0,1,0,5]) == 5
 assert comp2_vers_dec([1,0,0,0,0,1,0,5]) == -123
 assert comp2_vers_dec([1,0,0,0]) == -8
+
 
 
 
