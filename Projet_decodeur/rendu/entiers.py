@@ -1,5 +1,20 @@
 # Instructions 0
 def afficher_binaire(bits):
+     """
+    Affiche et retourne une chaîne représentant un nombre binaire.
+
+    Paramètres
+    ----------
+    bits : list[int]
+        Liste de bits (0 et 1) représentant un nombre binaire.
+        Le bit de poids faible est supposé être à la fin de la liste.
+
+    Retour
+    ------
+    str
+        Chaîne de caractères correspondant au nombre binaire,
+        avec un espace ajouté tous les 4 bits.
+    """
     nb = ""
     for i in range(len(bits)-1,-1,-1):
         nb = nb + str(bits[i])
@@ -14,6 +29,19 @@ def afficher_binaire(bits):
 
 # Instructions 1
 def bin_vers_dec(bits):
+    """
+    Convertit un nombre binaire en nombre décimal.
+
+    Paramètres
+    ----------
+    bits : list[int]
+        Liste de bits (0 et 1) représentant un nombre binaire.
+
+    Retour
+    ------
+    int
+        Valeur décimale correspondante.
+    """
     n = 0
     for i in range(len(bits)):
         n += bits[i] * 2**(len(bits)-i-1)
@@ -22,6 +50,19 @@ def bin_vers_dec(bits):
 
 # Instructions 2
 def dec_vers_bin(n):
+    """
+    Convertit un nombre décimal en binaire.
+
+    Paramètres
+    ----------
+    n : int
+        Nombre décimal à convertir.
+
+    Retour
+    ------
+    list[int]
+        Liste de bits représentant le nombre en base 2.
+    """
     if n == 0 :
         return [0]  
     b = []
@@ -33,6 +74,19 @@ def dec_vers_bin(n):
 
 # Instructions 3
 def oct_vers_dec(octal):
+    """
+    Convertit un nombre octal en décimal.
+
+    Paramètres
+    ----------
+    octal : list[int]
+        Liste de chiffres (0 à 7) représentant un nombre en base 8.
+
+    Retour
+    ------
+    int
+        Valeur décimale correspondante.
+    """
     valeur = 0
     puissance = len(octal) - 1
     for chiffre in octal:
@@ -43,6 +97,19 @@ def oct_vers_dec(octal):
 
 # Instructions 4
 def dec_vers_oct(n):
+    """
+    Convertit un nombre décimal en octal.
+
+    Paramètres
+    ----------
+    n : int
+        Nombre décimal à convertir.
+
+    Retour
+    ------
+    list[int]
+        Liste de chiffres représentant le nombre en base 8.
+    """
     if n == 0:
         return [0]
     resultat = []
@@ -53,6 +120,19 @@ def dec_vers_oct(n):
 
 # Instructions 5
 def hex_vers_dec(hexa):
+    """
+    Convertit un nombre hexadécimal en décimal.
+
+    Paramètres
+    ----------
+    hexa : list[str | int]
+        Liste contenant des chiffres hexadécimaux (0-9, A-F).
+
+    Retour
+    ------
+    int
+        Valeur décimale correspondante.
+    """
     for i in range(len(hexa)):
         if hexa[i] == "A":
             hexa[i] = 10
@@ -78,6 +158,19 @@ def hex_vers_dec(hexa):
 
 # Instructions 6
 def dec_vers_hex(dec):
+    """
+    Convertit un nombre décimal en hexadécimal.
+
+    Paramètres
+    ----------
+    dec : int
+        Nombre décimal à convertir.
+
+    Retour
+    ------
+    list[str | int]
+        Liste représentant le nombre en base 16 (0-9, A-F).
+    """
     if dec == 0:
         return [0]
     hexa = []
@@ -103,14 +196,53 @@ def dec_vers_hex(dec):
 
 # Instructions 7
 def bin_vers_hex(bits):
+    """
+    Convertit un nombre binaire en hexadécimal.
+
+    Paramètres
+    ----------
+    bits : list[int]
+        Liste de bits représentant un nombre binaire.
+
+    Retour
+    ------
+    list[str | int]
+        Représentation du nombre en base 16.
+    """
     return dec_vers_hex(bin_vers_dec(bits))
 
 # Instructions 8
 def hex_vers_bin(bits):
+    """
+    Convertit un nombre hexadécimal en binaire.
+
+    Paramètres
+    ----------
+    bits : list[str | int]
+        Liste représentant un nombre en base 16.
+
+    Retour
+    ------
+    list[int]
+        Représentation du nombre en base 2.
+    """
     return dec_vers_bin(hex_vers_dec(bits))
 
 # Instructions 9
 def bin_vers_chaine(b):
+    """
+    Transforme une liste de bits en chaîne de caractères.
+
+    Paramètres
+    ----------
+    b : list[int]
+        Liste de bits.
+
+    Retour
+    ------
+    str
+        Chaîne correspondant au nombre binaire.
+    """
     c = ""
     for elm in b:
         c += str(elm)
@@ -118,6 +250,19 @@ def bin_vers_chaine(b):
 
 # Instructions 10
 def bin_vers_entier(bits):
+    """
+    Transforme une liste de bits en entier (sans conversion binaire).
+
+    Paramètres
+    ----------
+    bits : list[int]
+        Liste de bits.
+
+    Retour
+    ------
+    int
+        Entier correspondant à la concaténation des bits.
+    """
     chaine = ""
     for bit in bits:
         chaine += str(bit)
@@ -126,6 +271,19 @@ def bin_vers_entier(bits):
 
 # Instructions 11
 def hex_vers_chaine(hexa):
+    """
+    Transforme une liste hexadécimale en chaîne de caractères.
+
+    Paramètres
+    ----------
+    hexa : list[str | int]
+        Liste représentant un nombre en base 16.
+
+    Retour
+    ------
+    str
+        Chaîne hexadécimale correspondante.
+    """
     car = ""
     for elm in hexa:
         car = car + str(elm)
@@ -134,6 +292,21 @@ def hex_vers_chaine(hexa):
 
 # Instructions 12
 def addition_binaire(a, b):
+    """
+    Effectue l'addition de deux nombres binaires.
+
+    Paramètres
+    ----------
+    a : list[int]
+        Premier nombre binaire.
+    b : list[int]
+        Deuxième nombre binaire.
+
+    Retour
+    ------
+    list[int]
+        Résultat de l'addition en binaire.
+    """
     resultat = []
     retenue = 0
 
@@ -199,6 +372,7 @@ assert hex_vers_chaine(['F']) == "F"
 # Tests addition_binaire
 assert addition_binaire([1, 0, 1, 0], [1, 1]) == [1, 1, 0, 1]  # 10 + 3 = 13
 assert addition_binaire([1, 1, 1, 1], [1]) == [1, 0, 0, 0, 0]  # 15 + 1 = 16
+
 
 
 
