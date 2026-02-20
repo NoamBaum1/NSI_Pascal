@@ -58,30 +58,61 @@ def mantisse(nb):
 
 
 #Instruction 31
-def dec_vers_ieee(x):
-    """
-    Convertit un nombre décimal en représentation IEEE 754
-    simple précision (32 bits).
+def dec_vers_ieee(n):
+    ieee = {}
 
-    Paramètres
-    ----------
-    x : float
-        Nombre décimal à convertir.
+    # ----- SIGNE -----
+    if n < 0:
+        ieee['sign'] = 1
+        n = -n
+    else:
+        ieee['sign'] = 0
 
-    Retour
-    ------
-    dict
-        Dictionnaire contenant :
-        - 'signe' : bit de signe
-        - 'exposant' : liste des 8 bits d’exposant
-        - 'mantisse' : liste des 23 bits de mantisse
-    """
-    s, e, m = forme_normalisee(x)
-    return {
-        "signe": s,
-        "exposant": e
-        "mantisse": m
-    }
+    # ----- CAS ZERO -----
+    if n == 0:
+        ieee['expo'] = [0] * 8
+        ieee['mant'] = [0] * 23
+        return ieee
+
+    # ----- NORMALISATION -----
+    e = 0
+    m = n
+
+    # Ajuster pour avoir 1 ≤ m < 2
+    while m >= 2:
+        m /= 2
+        e += 1
+
+    while m < 1:
+        m *= 2
+        e -= 1
+
+    # ----- EXPOSANT BIAISÉ -----
+    exposant_biais = e + 127
+
+    expo_bits = []
+    valeur = exposant_biais
+
+    for i in range(8):
+        expo_bits.insert(0, valeur % 2)
+        valeur //= 2
+
+    ieee['expo'] = expo_bits
+
+    # ----- MANTISSE -----
+    mantisse = []
+    fraction = m - 1  # on enlève le 1 implicite
+
+    for i in range(23):
+        fraction *= 2
+        bit = int(fraction)
+        mantisse.append(bit)
+        fraction -= bit
+
+    ieee['mant'] = mantisse
+
+    return ieee
+
 
 
 #Instruction 32
@@ -138,6 +169,7 @@ def tests_ieee():
     # Tests automatiques des conversions IEEE
     assert round(ieee_vers_dec(dec_vers_ieee(1.0)), 5) == 1.0
     assert round(ieee_vers_dec(dec_vers_ieee(2.5)), 5) == 2.5
+
 
 
 
