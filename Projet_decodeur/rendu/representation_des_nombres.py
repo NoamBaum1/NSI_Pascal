@@ -28,7 +28,7 @@ def menu_saisie():
                 if c not in "0123456789.":
                     valide = False
             if valide and n != "":
-                return float(n)
+                return float(n),base
 
         # Binaire
         elif base == "2":
@@ -37,7 +37,7 @@ def menu_saisie():
                 if c not in "01.":
                     valide = False
             if valide and n != "":
-                return int(n, 2)
+                return int(n, 2),base
 
         # Octal
         elif base == "3":
@@ -46,7 +46,7 @@ def menu_saisie():
                 if c not in "01234567.":
                     valide = False
             if valide and n != "":
-                return int(n, 8)
+                return int(n, 8),base
 
         # Hexadécimal
         elif base == "4":
@@ -55,7 +55,7 @@ def menu_saisie():
                 if c not in "0123456789ABCDEF.":
                     valide = False
             if valide and n != "":
-                return int(n, 16)
+                return int(n, 16),base
 
         print("Erreur : saisie invalide pour cette base, recommencez")
 
@@ -70,7 +70,7 @@ def menu_conversion():
     print("=== REPRESENTATIONS DES NOMBRES ===\n")
 
     # Saisie du nombre par l'utilisateur
-    n = menu_saisie()
+    n,base = menu_saisie()
 
     # Dictionnaire de stockage des représentations
     rep = {}
@@ -80,10 +80,19 @@ def menu_conversion():
     # ----- CAS ENTIER -----
     if float(n) == float(int(n)):
         n = int(n)  # s'assure que n est bien un entier
+        if base == 2:
+            n = bin_vers_dec(n)
+        if base == 3:
+            n = oct_vers_dec(n)
+        if base == 4:
+            n = hex_vers_dec(n)
 
         # Binaire
         rep['bin'] = afficher_binaire(dec_vers_bin(abs(n)))
-
+        
+        # Octal
+        rep['oct'] = afficher_binaire(dec_vers_oct(abs(n)))
+        
         # Hexadécimal
         rep['hex'] = afficher_binaire(dec_vers_hex(abs(n)))
 
@@ -94,6 +103,7 @@ def menu_conversion():
         print("\nNombre entier détecté\n")
         print("Décimal        :", rep['dec'])
         print("Binaire        :", rep['bin'])
+        print("Octal          :", rep['oct'])
         print("Hexadécimal    :", rep['hex'])
         print("Complément à 2 :", rep['comp2'])
 
@@ -116,4 +126,4 @@ def menu_conversion():
         print("\nNombre non entier détecté\n")
         print("Décimal :", rep['dec'])
         print("Binaire :", rep['bin'])
-        print("IEEE   :", rep['ieee'])
+        print("IEEE    :", rep['ieee'])
