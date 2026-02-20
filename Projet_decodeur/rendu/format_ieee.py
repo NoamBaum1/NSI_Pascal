@@ -55,6 +55,19 @@ def exposant(nb):
 
 #Instruction 30
 def mantisse(nb):
+    """
+    Trouve la mantisse associé au format IEEE 754./
+
+    Paramètres
+    ----------
+    nb : float
+        Nombre décimal à convertir.
+
+    Retour
+    ------
+    list[int]
+        Liste des bits de la mantisse
+    """
     binaire = fractionnaire_dec_vers_bin(nb,24)
     bin_decimal = binaire["enti"]+binaire["frac"] + [0]*23
     return bin_decimal[1:24]
@@ -213,6 +226,7 @@ assert ieee_vers_dec({
     'expo': [1,0,0,0,0,1,0,1],
     'mant': [1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 }) == -100.25
+
 
 
 
