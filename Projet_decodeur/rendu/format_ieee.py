@@ -25,13 +25,13 @@ def forme_normalisee(nb):
 
 
 #Instruction 29
-def exposant(x):
+def exposant(nb):
     """
     Calcule les 8 bits de l'exposant IEEE 754 simple précision.
 
     Paramètres
     ----------
-    x : float
+    nb : float
         Nombre décimal à convertir.
 
     Retour
@@ -39,29 +39,22 @@ def exposant(x):
     list[int]
         Liste de 8 bits correspondant à l’exposant biaisé (biais = 127).
     """
-    if x == 0:
-        # Pour 0, exposant = 0
-        return [0]*8
-
-    # Calculer l'exposant en base 2
-    import math
-    e = int(math.floor(abs(x)).bit_length() - 1 if abs(x) >= 1 else math.floor(math.log2(abs(x))))
-    
-    # Biais IEEE 754 simple précision
-    e_biais = e + 127
-
-    # Conversion en 8 bits
-    bits = []
-    for i in range(8):
-        bits.insert(0, e_biais % 2)
-        e_biais //= 2
-
-    return bits
+    nb = fractionnaire_dec_vers_bin(decimal,24)
+    if len(nb["enti"]) == 1 and nb["enti"][0]==0 :
+        exp = -1
+        while nb["enti"][0] == 1:
+            nb["enti"] = nb["enti"][1:]
+            exp -= 1
+        return [0] * (8 - len(dec_vers_bin(exp+127))) + dec_vers_bin(exp+127)
+    else:
+        return [0] * (8 - len(dec_vers_bin(len(nb["enti"])+126))) + dec_vers_bin(len(nb["enti"])+126)
 
 
 #Instruction 30
-def mantisse(x):
-    
+def mantisse(nb):
+    binaire = fractionnaire_dec_vers_bin(nb,24)
+    bin_decimal = binaire["enti"]+binaire["frac"] + [0]*23
+    return bin_decimal[1:24]
 
 
 #Instruction 31
@@ -145,6 +138,7 @@ def tests_ieee():
     # Tests automatiques des conversions IEEE
     assert round(ieee_vers_dec(dec_vers_ieee(1.0)), 5) == 1.0
     assert round(ieee_vers_dec(dec_vers_ieee(2.5)), 5) == 2.5
+
 
 
 
