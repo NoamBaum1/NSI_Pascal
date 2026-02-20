@@ -22,14 +22,19 @@ def menu_saisie():
         n = input("Saisir le nombre : ")
 
         # Décimal
-        if base == "1" and n.lstrip('-').isdigit():
-            return int(n)
+        if base == "1":
+            valide = True
+            for c in n:
+                if c not in "0123456789.":
+                    valide = False
+            if valide and n != "":
+                return float(n)
 
         # Binaire
         elif base == "2":
             valide = True
             for c in n:
-                if c not in "01":
+                if c not in "01.":
                     valide = False
             if valide and n != "":
                 return int(n, 2)
@@ -38,7 +43,7 @@ def menu_saisie():
         elif base == "3":
             valide = True
             for c in n:
-                if c not in "01234567":
+                if c not in "01234567.":
                     valide = False
             if valide and n != "":
                 return int(n, 8)
@@ -47,7 +52,7 @@ def menu_saisie():
         elif base == "4":
             valide = True
             for c in n.upper():
-                if c not in "0123456789ABCDEF":
+                if c not in "0123456789ABCDEF.":
                     valide = False
             if valide and n != "":
                 return int(n, 16)
@@ -73,17 +78,17 @@ def menu_conversion():
     rep['sign'] = 0 if n >= 0 else 1
 
     # ----- CAS ENTIER -----
-    if int(n) == n:
+    if float(n) == float(int(n)):
         n = int(n)  # s'assure que n est bien un entier
 
         # Binaire
-        rep['bin'] = dec_vers_bin(abs(n))
+        rep['bin'] = afficher_binaire(dec_vers_bin(abs(n)))
 
         # Hexadécimal
-        rep['hex'] = dec_vers_hex(abs(n))
+        rep['hex'] = afficher_binaire(dec_vers_hex(abs(n)))
 
         # Complément à 2 sur NB_BITS (par exemple 8 bits)
-        rep['comp2'] = dec_vers_comp2(n, 8)
+        rep['comp2'] = afficher_binaire(dec_vers_comp2(n, 8))
 
         # Affichage simple
         print("\nNombre entier détecté\n")
@@ -95,14 +100,20 @@ def menu_conversion():
     # ----- CAS NON ENTIER -----
     else:
         # Binaire fractionnaire (avec précision par défaut, ex: PRECISION = 10)
-        rep['bin'] = fractionnaire_dec_vers_bin(n, 10)
+        nb = fractionnaire_dec_vers_bin(n, 10)
+        s, e, f = nb["sign"],nb["enti"],nb["frac"]
+        char = ""
+        for elm in e+[","]+f:
+            char = char + str(elm)
+        
+        
+        rep['bin'] = char
 
         # Format IEEE 754 simple précision
-        rep['ieee'] = dec_vers_ieee(n)
+        rep['ieee'] = afficher_ieee(dec_vers_ieee(n))
 
         # Affichage simple
         print("\nNombre non entier détecté\n")
         print("Décimal :", rep['dec'])
         print("Binaire :", rep['bin'])
         print("IEEE   :", rep['ieee'])
-
