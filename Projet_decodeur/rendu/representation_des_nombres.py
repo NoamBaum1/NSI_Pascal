@@ -81,6 +81,8 @@ def menu_conversion():
 
     # ----- CAS ENTIER -----
     if float(n) == float(int(n)) or base == 4:
+        if base != 4:
+            n = int(n)
           # Si n est un entier que n est bien un entier ou une liste en hexadécimal
         
         if base == "2":
