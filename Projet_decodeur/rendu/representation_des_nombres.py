@@ -55,7 +55,9 @@ def menu_saisie():
                 if c not in "0123456789ABCDEF":
                     valide = False
             if valide and n != "":
-                return int(n),base
+                n = [int(elm) if elm in "12334567890" else elm for elm in str(n)]
+                n = hex_vers_dec(n)
+                return n,base
 
         print("Erreur : saisie invalide pour cette base, recommencez")
 
@@ -78,8 +80,8 @@ def menu_conversion():
     rep['sign'] = 0 if n >= 0 else 1
 
     # ----- CAS ENTIER -----
-    if float(n) == float(int(n)):
-        n = int(n)  # s'assure que n est bien un entier
+    if float(n) == float(int(n)) or base == 4:
+          # Si n est un entier que n est bien un entier ou une liste en hexadécimal
         
         if base == "2":
             n = [int(elm) for elm in str(n)]
@@ -87,10 +89,7 @@ def menu_conversion():
         if base == "3":
             n = [int(elm) for elm in str(n)]
             n = oct_vers_dec(n)
-        if base == "4":
-            n = [int(elm) for elm in str(n)]
-            n = hex_vers_dec(n)
-
+        
         # Binaire
         rep['bin'] = afficher_binaire(dec_vers_bin(abs(n)))
         
