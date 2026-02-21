@@ -87,7 +87,7 @@ def oct_vers_dec(octal):
     valeur = 0
     puissance = len(octal) - 1
     for chiffre in octal:
-        valeur += chiffre * (8 ** puissance)
+        valeur += int(chiffre) * (8 ** puissance)
         puissance -= 1
     return valeur
 
@@ -369,6 +369,7 @@ assert hex_vers_chaine(['F']) == "F"
 # Tests addition_binaire
 assert addition_binaire([1, 0, 1, 0], [1, 1]) == [1, 1, 0, 1]  # 10 + 3 = 13
 assert addition_binaire([1, 1, 1, 1], [1]) == [1, 0, 0, 0, 0]  # 15 + 1 = 16
+
 
 
 
