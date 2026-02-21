@@ -99,57 +99,8 @@ def dec_vers_ieee(n):
     dict
         Représentation IEEE 754.
     """
-    ieee = {}
-
-    # ----- SIGNE -----
-    if n < 0:
-        ieee['sign'] = 1
-        n = -n
-    else:
-        ieee['sign'] = 0
-
-    # ----- CAS ZERO -----
-    if n == 0:
-        ieee['expo'] = [0] * 8
-        ieee['mant'] = [0] * 23
-        return ieee
-
-    # ----- NORMALISATION -----
-    e = 0
-    m = n
-
-    # Ajuster pour avoir 1 ≤ m < 2
-    while m >= 2:
-        m /= 2
-        e += 1
-
-    while m < 1:
-        m *= 2
-        e -= 1
-
-    # ----- EXPOSANT BIAISÉ -----
-    exposant_biais = e + 127
-
-    expo_bits = []
-    valeur = exposant_biais
-
-    for i in range(8):
-        expo_bits.insert(0, valeur % 2)
-        valeur //= 2
-
-    ieee['expo'] = expo_bits
-
-    # ----- MANTISSE -----
-    mantisse = []
-    fraction = m - 1  # on enlève le 1 implicite
-
-    for i in range(23):
-        fraction *= 2
-        bit = int(fraction)
-        mantisse.append(bit)
-        fraction -= bit
-
-    ieee['mant'] = mantisse
+    s, e, m = forme_normalisee(n)
+    ieee = {"sign" : s , "expo" : e , "mant" : m}
 
     return ieee
 
