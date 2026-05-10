@@ -1,0 +1,24 @@
+
+main {width: 80%;margin: 50px;background-color: hsla(0,70%,50%,0.3);padding: 0 20px
+20px 20px;border: 5px solid black;}
+
+.gauche{width:50%;}
+
+figure{width:30%;}
+img{width:100%;}
+figcaption{font-size: 0.8em;font-style: italic;}
+a:visited{color: #0000ff;}
+
+
+h2 { font-variant: small-caps;
+color: white;
+font-size: 8em;
+}
+
+
+
+form {background-color:white; text-align: center;}
+
+textarea {resize:none;padding: 0 150px 30px 30px;border: 2px solid black;font-size: 2em;}
+
+
