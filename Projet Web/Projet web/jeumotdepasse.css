@@ -1,0 +1,129 @@
+body {
+
+    background: #0f172a;
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    text-align: center;
+
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+
+    width: 80%;
+    margin: auto;
+
+    margin-top: 40px;
+}
+
+/* TITRE */
+
+.titre {
+
+    font-size: 60px;
+
+    color: #38bdf8;
+}
+
+/* AUTEURS */
+
+.auteurs {
+
+    margin-bottom: 40px;
+
+    color: #cbd5e1;
+}
+
+/* TEXTAREA */
+
+textarea {
+
+    width: 350px;
+    height: 45px;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    border: 2px solid #38bdf8;
+
+    background: #1e293b;
+
+    color: white;
+
+    resize: none;
+
+    font-size: 16px;
+}
+
+/* BOUTON */
+
+input[type="button"] {
+
+    margin-top: 20px;
+
+    padding: 12px 30px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #38bdf8;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+input[type="button"]:hover {
+
+    background: #0ea5e9;
+
+    transform: scale(1.05);
+}
+
+/* CONDITIONS */
+
+.condition {
+
+    display: none;
+
+    width: 60%;
+
+    margin: 15px auto;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    background: #1e293b;
+
+    font-size: 18px;
+
+    transition: 0.3s;
+}
+
+/* LIEN FINAL */
+
+#lienSecret {
+
+    display: none;
+
+    margin-top: 40px;
+}
+
+#lienSecret a {
+
+    color: #22c55e;
+
+    font-size: 30px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}

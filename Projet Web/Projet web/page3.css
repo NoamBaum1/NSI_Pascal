@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background-color: #e9eff5;
+    color: #1c1e21;
+}
+
+/* Header style type Facebook */
+header {
+    text-align: center;
+    padding: 30px;
+    background-color: #1877f2;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Titre */
+h1 {
+    font-size: 36px;
+}
+
+/* Consigne */
+.consigne {
+    font-size: 18px;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* Bloc style "card" */
+.bloc {
+    background-color: white;
+    margin: 25px auto;
+    padding: 20px;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Texte */
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Images */
+.image img {
+    width: 300px;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+    border-radius: 8px;
+}
+
+/* Vidéo */
+.video {
+    margin-top: 15px;
+}
+
+.video a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #0f5bd3;
+    padding: 10px 15px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+}
+
+.jeu a {
+    color: #1877f2;
+    font-weight: bold;
+}

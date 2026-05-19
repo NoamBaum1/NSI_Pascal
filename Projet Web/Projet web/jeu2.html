@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu JavaScript</title>
+
+    <link rel="stylesheet" href="jeu2.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Jeu JavaScript</h1>
+
+        <p class="consigne">
+            Consigne : donne la valeur 1 à la variable x.
+        </p>
+
+        <!-- Zone code -->
+        <textarea id="code" placeholder="Écris ton code JavaScript ici..."></textarea>
+
+        <br>
+
+        <button onclick="verifierCode()">Vérifier</button>
+
+        <p id="message"></p>
+
+        <!-- Lien caché -->
+        <div id="lienSecret" class="cache">
+            <a href="page3.html" target="_blank">
+                 Bravo ! Clique ici pour continuer
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function verifierCode() {
+
+            let code = document.getElementById("code").value;
+            let message = document.getElementById("message");
+            let lien = document.getElementById("lienSecret");
+
+            if (code.includes("x = 1") || code.includes("let x = 1") || code.includes("var x = 1;")) {
+
+                message.style.color = "lightgreen";
+                message.textContent = "Bravo, tu as réussi ! , voici les 2 autres time code / 1:10 et 0:57";
+
+                lien.classList.remove("cache");
+
+            } else {
+
+                message.style.color = "red";
+                message.textContent = "La variable x n'est pas correcte ";
+
+                lien.classList.add("cache");
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

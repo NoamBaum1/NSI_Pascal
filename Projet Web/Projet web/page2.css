@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Comic Sans MS", cursive;
+    background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffcc);
+    color: #ffffff;
+}
+
+/* Header style "old internet" */
+header {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(to right, #ff0000, #ffcc00);
+    border-bottom: 5px dashed yellow;
+}
+
+/* Titre flashy */
+h1 {
+    font-size: 40px;
+    text-shadow: 3px 3px black;
+}
+
+/* Boîtes style années 2000 */
+.bloc {
+    margin: 30px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 4px ridge #00ffcc;
+}
+
+/* Texte */
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Images */
+.image img {
+    width: 250px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border: 3px solid yellow;
+}
+
+/* Lien vidéo */
+.video {
+    margin-top: 20px;
+    padding: 15px;
+    background: black;
+    border: 3px dotted #00ffcc;
+}
+
+.video a {
+    color: #00ffcc;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #000;
+    border-top: 4px dashed #ffcc00;
+}
+
+.jeu a {
+    color: yellow;
+    font-size: 20px;
+}

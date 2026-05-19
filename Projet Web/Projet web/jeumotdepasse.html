@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu Mot de Passe</title>
+
+    <link rel="stylesheet" href="jeumotdepasse.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="titre">NOMALWEB</h1>
+
+        <p class="auteurs">
+            Bienvenue sur cette formation pour apprendre l’histoire du web :        </p>
+
+        <!-- Nom -->
+        <textarea placeholder="NOM"></textarea>
+
+        <p></p>
+
+        <!-- Prénom -->
+        <textarea placeholder="PRENOM"></textarea>
+
+        <p></p>
+
+        <!-- Mot de passe -->
+        <textarea id="mdp" placeholder="Mot de passe :"></textarea>
+
+        <p></p>
+
+        <!-- Bouton -->
+        <input type="button" value="Valider" onclick="Click()">
+
+        <!-- Conditions -->
+        <div id="condition1" class="condition">
+            Le mot de passe doit contenir au moins 8 caractères
+        </div>
+
+        <div id="condition2" class="condition">
+            Le mot de passe doit contenir au moins un caractère spécial
+        </div>
+
+        <div id="condition3" class="condition">
+            Le mot de passe doit contenir y avoir au moins une majuscule
+        </div>
+
+        <div id="condition4" class="condition">
+            La somme des chiffre doit être un multiple de 5
+        </div>
+
+        <div id="condition5" class="condition">
+            Le mot de passe doit contenir le nom de la professeur de NSI en minuscule
+        </div>
+
+        <div id="condition6" class="condition">
+            Le mot de passe doit être plus "FOOOOOORT"
+        </div>
+
+        <div id="condition7" class="condition">
+            Le mot de passe doit contenir la date de la victoire de Philippe II Auguste lors de la bataille  Bouvines
+        </div>
+
+        <div id="condition8" class="condition">
+            Le mot de passe doit contenir au moins une adresse Gmail
+        </div>
+
+        <!-- Lien secret -->
+        <div id="lienSecret">
+
+            <a href="page1.html" target="_blank">
+                 BRAVO ! CLIQUE ICI 
+            </a>
+
+        </div>
+
+    </div>
+
+    <script src="jeumotdepasse.js"></script>
+
+</body>
+
+</html>

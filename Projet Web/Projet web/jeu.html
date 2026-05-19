@@ -1,0 +1,78 @@
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu NOMALWEB</title>
+
+    <link rel="stylesheet" href="jeu.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Recrée cette page HTML</h1>
+
+        <p class="consigne">
+            Consigne : écris exactement le titre demandé.
+        </p>
+
+        <!-- Zone modèle -->
+        <div class="modele">
+            <h2>NOMALWEB</h2>
+        </div>
+
+        <!-- Zone joueur -->
+        <textarea id="code" placeholder="Écris ton code HTML ici..."></textarea>
+
+        <br>
+
+        <button onclick="verifierCode()">Vérifier</button>
+
+        <p id="message"></p>
+
+        
+        <div id="lienSecret" class="cache">
+            <a href="page2.html" target="_blank">
+                 Bravo ! Clique ici pour continuer
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function verifierCode() {
+
+            let code = document.getElementById("code").value;
+            let message = document.getElementById("message");
+            let lien = document.getElementById("lienSecret");
+
+            if (code.includes("NOMALWEB")) {
+
+                message.style.color = "lightgreen";
+                message.textContent = "Bravo, tu as réussi ! Note ce time code qu'elle que part : 1:54";
+
+                lien.classList.remove("cache");
+
+            } else {
+
+                message.style.color = "red";
+                message.textContent = "Le titre est incorrect ";
+
+                lien.classList.add("cache");
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
+
+

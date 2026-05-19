@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    color: white;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 40px;
+    color: #00ffcc;
+    text-shadow: 2px 2px 10px black;
+}
+
+.texte {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Zone lien */
+.cta {
+    margin-top: 50px;
+}
+
+/* Flèches */
+.fleches {
+    font-size: 30px;
+    color: #00ffcc;
+    letter-spacing: 5px;
+    margin: 10px 0;
+}
+
+/* Gros bouton lien */
+.lien {
+    display: inline-block;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+    background: #00ffcc;
+    padding: 20px 40px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0px 0px 20px #00ffcc;
+    transition: 0.3s;
+}
+
+.lien:hover {
+    transform: scale(1.1);
+    background: #00ffaa;
+}
